@@ -1,71 +1,85 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* 🌐 Global Zentra Theme System */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root[data-theme="dark"] {
+  --bg-color: #0c0f14;
+  --card-color: #12161d;
+  --text-color: #ffffff;
+  --accent-color: #16f1c6;
+  --secondary-text: #a6aab3;
+  --border-color: rgba(255, 255, 255, 0.06);
 }
 
+:root[data-theme="light"] {
+  --bg-color: #f8f9fb;
+  --card-color: #ffffff;
+  --text-color: #0c0f14;
+  --accent-color: #1e1e1e;
+  --secondary-text: #6b6f75;
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Base Page Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ✅ Links */
 a {
+  color: var(--accent-color);
+  text-decoration: none;
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  opacity: 0.9;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
-  font-family: "Segoe UI", sans-serif;   
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+/* ✅ Buttons */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border-radius: 10px;
+  border: none;
+  padding: 0.7em 1.4em;
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-weight: 600;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: 0.25s ease;
 }
 button:hover {
-  border-color: #646cff;
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:active {
+  transform: translateY(0);
 }
 
+/* ✅ Headings */
+h1, h2, h3, h4 {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+/* ✅ Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+/* ✅ Smooth color transitions for theme switch */
+body, .app-shell, .main, .card, .settings-card, .device-card {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}

@@ -3,15 +3,20 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 
-// ✅ Import Bootstrap core
+// ✅ Bootstrap core + icons
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
-// ✅ Import Bootstrap Icons
 import "bootstrap-icons/font/bootstrap-icons.css";
+
+// ✅ Theme Provider (controls Zentra Light/Dark)
+import { ThemeProvider } from "./context/ThemeContext.jsx";
+
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </StrictMode>
 );

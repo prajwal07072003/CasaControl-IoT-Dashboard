@@ -1,0 +1,125 @@
+/* === Landing Page Wrapper === */
+.landing-wrapper {
+  height: 100vh;
+  width: 100vw;
+  background: #0c0f14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Neon radial glow behind content */
+.landing-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(87, 255, 190, 0.25), transparent 70%);
+  filter: blur(40px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* === Main Content === */
+.landing-content {
+  text-align: center;
+  z-index: 10;
+  animation: fadeUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* Logo */
+.landing-logo {
+  width: 130px;
+  height: auto;
+  margin-bottom: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Title */
+.landing-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+/* Tagline */
+.landing-tagline {
+  margin-top: 6px;
+  font-size: 1.2rem;
+  color: #d7d7d7;
+}
+
+/* === Buttons === */
+.landing-buttons {
+  margin-top: 26px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-primary {
+  padding: 12px 26px;
+  background: linear-gradient(135deg, #8effda, #59e8c2);
+  border: none;
+  color: #000;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(94, 255, 212, 0.45);
+}
+
+.btn-outline {
+  padding: 12px 26px;
+  border: 2px solid #59e8c2;
+  color: #59e8c2;
+  background: transparent;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn-outline:hover {
+  background: #59e8c2;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+/* === Animations === */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* === Mobile Responsive === */
+@media (max-width: 600px) {
+  .landing-title {
+    font-size: 2.4rem;
+  }
+  .landing-buttons {
+    flex-direction: column;
+  }
+}

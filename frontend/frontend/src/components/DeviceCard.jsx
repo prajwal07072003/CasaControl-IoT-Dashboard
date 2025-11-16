@@ -1,36 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  FaEllipsisV,
   FaLightbulb,
   FaFan,
   FaSnowflake,
   FaTv,
   FaFireAlt,
-  FaBlender,
+  FaBlender
 } from "react-icons/fa";
 
-export default function DeviceCard({ device, onToggle }) {
-  const name = device.name.toLowerCase();
+export default function DeviceCard({ device, onToggle, onOptions }) {
+  const [animating, setAnimating] = useState(false);
 
-  // 🌟 Dynamic icon selection
-  let icon;
-  if (name.includes("light")) icon = <FaLightbulb size={40} />;
-  else if (name.includes("fan")) icon = <FaFan size={40} />;
-  else if (name.includes("ac")) icon = <FaSnowflake size={40} />;
-  else if (name.includes("tv")) icon = <FaTv size={40} />;
-  else if (name.includes("heater")) icon = <FaFireAlt size={40} />;
-  else if (name.includes("fridge")) icon = <FaBlender size={40} />;
-  else icon = <FaLightbulb size={40} />;
+  const name = (device.name || "").toLowerCase();
+  const icon =
+    name.includes("fan") ? <FaFan /> :
+    name.includes("ac") ? <FaSnowflake /> :
+    name.includes("tv") ? <FaTv /> :
+    name.includes("heater") ? <FaFireAlt /> :
+    name.includes("fridge") ? <FaBlender /> :
+    <FaLightbulb />;
+
+  const triggerToggle = () => {
+    setAnimating(true);
+    setTimeout(() => setAnimating(false), 450); // animation reset
+    onToggle(device);
+  };
 
   return (
     <div
-      className={`device-card ${device.status ? "on" : "off"}`}
-      onClick={() => onToggle(device)}
+      className={`device-card ${device.status ? "on" : "off"} ${animating ? "anim" : ""}`}
+      onClick={triggerToggle}
     >
-      <div className="mb-2" style={{ fontSize: "2rem" }}>
-        {icon}
+      {/* ✅ 3-dot menu button */}
+      <div className="device-card-header">
+        <FaEllipsisV
+          className="device-menu"
+          onClick={(e) => {
+            e.stopPropagation();   // stop toggle when clicking menu
+            onOptions?.(device);
+          }}
+        />
       </div>
-      <h6 className="fw-semibold mb-1">{device.name}</h6>
-      <p className="small">{device.status ? "🟢 ON" : "🔴 OFF"}</p>
+
+      {/* ✅ Icon + name + status */}
+      <div className="device-icon">{icon}</div>
+      <div className="device-name">{device.name}</div>
+      <div className="device-status">{device.status ? "On" : "Off"}</div>
+
+      {/* ✅ ripple */}
+      <span className="ripple"></span>
     </div>
   );
 }

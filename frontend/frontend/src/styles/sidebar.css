@@ -1,0 +1,99 @@
+.sidebar {
+  width: 250px;
+  background: #11151b;
+  border-radius: 18px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: white;
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 14px 8px;
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  color: #cfd3e1;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-item:hover {
+  background: #1a1f26;
+  color: white;
+}
+
+.nav-item.active {
+  background: #202630;
+  border: 1px solid rgba(255, 220, 120, 0.4);
+  color: white;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: .5px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #5b5ff5; /* Zentra accent */
+  box-shadow: 0 0 12px rgba(91,95,245,0.7);
+}
+
+.tagline {
+  font-size: .72rem;
+  color: rgba(255,255,255,0.5);
+  margin-left: 3px;
+  font-weight: 500;
+}
+.nav-item {
+  position: relative;
+  transition: all 0.25s ease;
+}
+.nav-item:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateX(6px);
+}
+
+/* Active link subtle pulse */
+.nav-item.active {
+  box-shadow: 0 0 8px rgba(255,255,255,0.1);
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 8px rgba(255,255,255,0.1); }
+  50% { box-shadow: 0 0 16px rgba(255,255,255,0.2); }
+}
